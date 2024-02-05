@@ -359,6 +359,7 @@ async function main(){
                 .then(data => {
                     CHashrate.innerHTML = "Current Hashrate: "+roundToTwo((data.currentHashrate)/MhDecimal)+" Mh"
                     RHashrate.innerHTML = "Reported Hashrate: "+roundToTwo((data.hashrate)/MhDecimal)+" Mh"
+                    currentLuck.innerHTML = "currentLuck: "+data.currentLuck
                     sharesValid.innerHTML = "sharesValid: "+data.sharesValid
                     sharesInvalid.innerHTML = "sharesInvalid: "+data.sharesInvalid
                     sharesStale.innerHTML = "sharesStale: "+data.sharesStale
