@@ -26,9 +26,9 @@
                   
                 </div>
                 <div style="border: 1px solid #00ff0050;padding: 5px;">
-                    <input placeholder="Address" value="19doxJRR31vis3BK3TEr7rak58gnkWPf8G" id="addressSearch" style="width: 75%;"><button onclick='setNewAddress()'>Search</button>
+                    <input placeholder="Address" value="0xec1cfc722c0d3e5d40a5c735077d1042d1437b7f" id="addressSearch" style="width: 75%;"><button onclick='setNewAddress()'>Search</button>
                     <br>
-                    <input placeholder="60" value="60" id="settedUpdateTime" style="width: 10%;text-align: center;"> <button onclick="setUpdateTime()">Set Update Time</button>
+                    <input placeholder="30" value=""30" id="settedUpdateTime" style="width: 10%;text-align: center;"> <button onclick="setUpdateTime()">Set Update Time</button>
                     <button onclick="forceupdate()">Force Update</button>
                     <p>Updating in <span id="update" style="color: #ffff00;">60</span></p>
                 </div>
@@ -46,9 +46,9 @@
                     <p>Next ETC payout in <span id="payoutTime"></span></p>
                 </div>
                 <div style="border: 1px solid #00ff0050;padding: 5px;">
-                    <p id="total">Total: 0.00 ETH - $0.00</p>
-                    <p id="cleared">Unpaid: 0.00 ETH - $0.00</p>
-                    <p id="pending">Immature: 0.00 ETH - $0.00</p>
+                    <p id="total">Total: 0.00 ETC - $0.00</p>
+                    <p id="cleared">Unpaid: 0.00 ETC - $0.00</p>
+                    <p id="pending">Immature: 0.00 ETC - $0.00</p>
                 </div>
                 <div style="border: 1px solid #00ff0050;padding: 5px;">
                     <p id="CHashrate">Current Hashrate: 0 Mh</p>
@@ -78,12 +78,12 @@
                 </div>
                 <div style="border: 1px solid #00ff0050;padding: 5px;">
                     <span>Earning History</span>
-                    <p>Last 60m: <span id="l60">0.00 ETH - $0.00</span></p>
-                    <p>Last 12h: <span id="l12">0.00 ETH - $0.00</span></p>
-                    <p>Last 24h: <span id="l24">0.00 ETH - $0.00</span></p>
-                    <p>Last 07d:  <span id="l7" >0.00 ETH - $0.00</span></p>
-                    <p>Last 30d: <span id="l30">0.00 ETH - $0.00</span></p>
-                    <p>Total paid: <span  id="totalPaid">0.00 ETH - $0.00</span></p>
+                    <p>Last 60m: <span id="l60">0.00 ETC - $0.00</span></p>
+                    <p>Last 12h: <span id="l12">0.00 ETC - $0.00</span></p>
+                    <p>Last 24h: <span id="l24">0.00 ETC - $0.00</span></p>
+                    <p>Last 07d:  <span id="l7" >0.00 ETC - $0.00</span></p>
+                    <p>Last 30d: <span id="l30">0.00 ETC - $0.00</span></p>
+                    <p>Total paid: <span  id="totalPaid">0.00 ETC - $0.00</span></p>
                 </div>
                 <div style="border: 1px solid #00ff0050;padding: 5px;">
                     <div class="row">
@@ -93,7 +93,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6"><p>Minimun ETH reward to play sound: </p></div>
-                        <div class="col-sm-2"><input style="width: 100%;" id="MinToSoundInput" onchange="convert()" value="0.005"></div>
+                        <div class="col-sm-2"><input style="width: 100%;" id="MinToSoundInput" onchange="convert()" value="0.07"></div>
                         <div class="col-sm-4"><button onclick="setMinToSound()">Set</button>
                             <button onclick="toggNots()" id="notBut" style="border-color: #ff0000;">Sounds OFF</button></div>
                     </div>
@@ -128,7 +128,7 @@
                             <thead>
                                 <tr>
                                     <th onclick="sortBlockTable(0)">Block</th>
-                                    <th onclick="sortBlockTable(1)">ETH</th>
+                                    <th onclick="sortBlockTable(1)">ETC</th>
                                     <th onclick="sortBlockTable(2)">USD</th>
                                     <th>%</th>
                                     <th>Time</th>
@@ -143,7 +143,7 @@
                         <table style="overflow: hidden;">
                             <thead>
                                 <tr>
-                                    <th id="PaymentsETHTitle">ETH</th>
+                                    <th id="PaymentsETHTitle">ETC</th>
                                     <th id="PaymentsUSDTitle">USD</th>
                                     <th>Fee</th>
                                     <th>Time</th>
@@ -211,7 +211,7 @@ var TimeLimit = 60
 var count = TimeLimit
 var CustomLimit = 100
 var soundOn = false
-var minToPlaySound = 0.005
+var minToPlaySound = 0.07
 
 let speech = new SpeechSynthesisUtterance()
 speech.lang = "en"
@@ -335,7 +335,7 @@ function setUpdateTime(){
 }
 
 function setNewAddress(){
-    window.open('https://crypt04dvisor.github.io/Minerscan/index.html?a='+document.getElementById("addressSearch").value)
+    window.open('https://crypt04dvisor.github.io/AlphaScan/index.html?a='+document.getElementById("addressSearch").value)
 }
     
 function getHoursAndMinutes(minutes){
@@ -360,13 +360,13 @@ async function main(){
                     sharesValid.innerHTML = "sharesValid: "+data.sharesValid
                     sharesInvalid.innerHTML = "sharesInvalid: "+data.sharesInvalid
                     sharesStale.innerHTML = "sharesStale: "+data.sharesStale
-                    totalPaid.innerHTML = (data.stats.paid/EthDecimal)+" ETH - $"+roundToTwo( (data.stats.paid/EthDecimal)*EthPrice)
+                    totalPaid.innerHTML = (data.stats.paid/EthDecimal)+" ETC - $"+roundToTwo( (data.stats.paid/EthDecimal)*EthPrice)
                     
-                    l60.innerHTML = (data["sumrewards"][0].reward/EthDecimal)+" ETH - $"+roundToTwo((data["sumrewards"][0].reward/EthDecimal)*EthPrice)
-                    l12.innerHTML = (data["sumrewards"][1].reward/EthDecimal)+" ETH - $"+roundToTwo((data["sumrewards"][1].reward/EthDecimal)*EthPrice)
-                    l24.innerHTML = (data["sumrewards"][2].reward/EthDecimal)+" ETH - $"+roundToTwo((data["sumrewards"][2].reward/EthDecimal)*EthPrice)
-                    l7.innerHTML = (data["sumrewards"][3].reward/EthDecimal)+" ETH - $"+roundToTwo((data["sumrewards"][3].reward/EthDecimal)*EthPrice)
-                    l30.innerHTML = (data["sumrewards"][4].reward/EthDecimal)+" ETH - $"+roundToTwo((data["sumrewards"][4].reward/EthDecimal)*EthPrice)
+                    l60.innerHTML = (data["sumrewards"][0].reward/EthDecimal)+" ETC - $"+roundToTwo((data["sumrewards"][0].reward/EthDecimal)*EthPrice)
+                    l12.innerHTML = (data["sumrewards"][1].reward/EthDecimal)+" ETC - $"+roundToTwo((data["sumrewards"][1].reward/EthDecimal)*EthPrice)
+                    l24.innerHTML = (data["sumrewards"][2].reward/EthDecimal)+" ETC - $"+roundToTwo((data["sumrewards"][2].reward/EthDecimal)*EthPrice)
+                    l7.innerHTML = (data["sumrewards"][3].reward/EthDecimal)+" ETC - $"+roundToTwo((data["sumrewards"][3].reward/EthDecimal)*EthPrice)
+                    l30.innerHTML = (data["sumrewards"][4].reward/EthDecimal)+" ETC - $"+roundToTwo((data["sumrewards"][4].reward/EthDecimal)*EthPrice)
 
                     total.innerHTML = "Total: "+(data.stats.immature + data.stats.balance)/EthDecimal+" ETH - $"+roundToTwo( ((data.stats.immature + data.stats.balance)/EthDecimal)*EthPrice)
                     cleared.innerHTML = "Unpaid: "+(data.stats.balance)/EthDecimal+" ETH - $"+roundToTwo( (data.stats.balance/EthDecimal)*EthPrice)
