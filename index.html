@@ -370,16 +370,9 @@ async function main(){
             .then(data => {
                 EthPrice = parseFloat(data.price)
                 ethtousd.innerHTML = "$"+roundToTwo(data.price*  parseFloat(inputConvert.value))
-            
-            
-
-
-        
                 fetch("https://solo-etc.2miners.com/api/accounts/"+currentAddress)
                 .then(response => response.json())
                 .then(data => {
-                    
-              
                     CHashrate.innerHTML = "Current Hashrate: "+roundToTwo((data.currentHashrate)/MhDecimal)+" Mh"
                     RHashrate.innerHTML = "Reported Hashrate: "+roundToTwo((data.hashrate)/MhDecimal)+" Mh"
                     currentLuck.innerHTML = "currentLuck: "+data.currentLuck
@@ -477,10 +470,8 @@ async function main(){
                         }
                     }
                 })
-              
             })
         }
-                  }
         count = count - 1
         if (count<=0){
             count = TimeLimit
