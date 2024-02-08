@@ -374,7 +374,10 @@ async function main(){
             .then(data => {
                 EthPrice = parseFloat(data.price)
                 ethtousd.innerHTML = "$"+roundToTwo(data.price*  parseFloat(inputConvert.value))
-                
+            fetch("https://solo-etc.2miners.com/api/stats")
+            .then(response => response.json())
+            .then(data => {
+                  height.innerHTML = "height: "+data.height     
                 fetch("https://solo-etc.2miners.com/api/accounts/"+currentAddress)
                 .then(response => response.json())
                 .then(data => {
@@ -477,6 +480,7 @@ async function main(){
                 })
             })
         }
+                  }
         count = count - 1
         if (count<=0){
             count = TimeLimit
