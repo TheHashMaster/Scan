@@ -369,15 +369,17 @@ async function main(){
             .then(data => {
                 EthPrice = parseFloat(data.price)
                 ethtousd.innerHTML = "$"+roundToTwo(data.price*  parseFloat(inputConvert.value))
-            fetch("https://solo-etc.2miners.com/api/stats")
-            .then(response => response.json())
-            .then(data => {
-                  height.innerHTML = "height: "+data.height    
+            
+            
+
 
                 })
+                fetch("https://solo-etc.2miners.com/api/stats")
                 fetch("https://solo-etc.2miners.com/api/accounts/"+currentAddress)
                 .then(response => response.json())
                 .then(data => {
+                    
+                    height.innerHTML = "height: "+data.height    
                     CHashrate.innerHTML = "Current Hashrate: "+roundToTwo((data.currentHashrate)/MhDecimal)+" Mh"
                     RHashrate.innerHTML = "Reported Hashrate: "+roundToTwo((data.hashrate)/MhDecimal)+" Mh"
                     currentLuck.innerHTML = "currentLuck: "+data.currentLuck
