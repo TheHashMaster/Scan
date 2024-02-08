@@ -366,10 +366,18 @@ async function main(){
     while (true){
         if (count == TimeLimit) {
             fetch("https://api.pro.coinbase.com/products/ETC-USD/ticker")
+               
             .then(response => response.json())
             .then(data => {
                 EthPrice = parseFloat(data.price)
                 ethtousd.innerHTML = "$"+roundToTwo(data.price*  parseFloat(inputConvert.value))
+
+                 fetch("https://etc.blockscout.com/api/v2/blocks?type=block%20%7C%20uncle%20%7C%20reorg
+)
+                .then(response => response.json())
+                .then(data => {
+                  
+                    height.innerHTML = "height: "+data.height
                 fetch("https://solo-etc.2miners.com/api/accounts/"+currentAddress)
                 .then(response => response.json())
                 .then(data => {
@@ -470,7 +478,9 @@ async function main(){
                         }
                     }
                 })
-            })
+          
+                  })
+                  })
         }
         count = count - 1
         if (count<=0){
