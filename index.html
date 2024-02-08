@@ -377,7 +377,7 @@ async function main(){
                  fetch("https://solo-etc.2miners.com/api/stats")
             .then(response => response.json())
             .then(data => {
-                  currentLuck.innerHTML = "height: "+data.height
+                  height.innerHTML = "height: "+data.height
                 fetch("https://solo-etc.2miners.com/api/accounts/"+currentAddress)
                 .then(response => response.json())
                 .then(data => {
